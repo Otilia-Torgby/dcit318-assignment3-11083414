@@ -20,7 +20,7 @@ public class Student
     public override string ToString() => $"{FullName} (ID: {Id}): Score = {Score}, Grade = {GetGrade()}";
 }
 
-// custom exceptions
+
 public class InvalidScoreFormatException : Exception { public InvalidScoreFormatException(string msg) : base(msg) { } }
 public class MissingFieldException : Exception { public MissingFieldException(string msg) : base(msg) { } }
 
@@ -72,7 +72,7 @@ public class Program
             string input = "students_input.txt";
             string output = "students_report.txt";
 
-            // 🔹 If input file doesn't exist, create it with sample data
+           
             if (!File.Exists(input))
             {
                 Console.WriteLine("Input file not found. Creating sample file...");

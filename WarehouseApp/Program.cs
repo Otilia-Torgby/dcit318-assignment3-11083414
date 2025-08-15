@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-// a) marker interface
+
 public interface IInventoryItem
 {
     int Id { get; }
@@ -9,7 +9,7 @@ public interface IInventoryItem
     int Quantity { get; set; }
 }
 
-// b) ElectronicItem
+
 public class ElectronicItem : IInventoryItem
 {
     public int Id { get; }
@@ -26,7 +26,7 @@ public class ElectronicItem : IInventoryItem
     public override string ToString() => $"Electronics #{Id}: {Name} ({Brand}), Qty={Quantity}, Warranty={WarrantyMonths}m";
 }
 
-// c) GroceryItem
+
 public class GroceryItem : IInventoryItem
 {
     public int Id { get; }
@@ -42,12 +42,12 @@ public class GroceryItem : IInventoryItem
     public override string ToString() => $"Grocery #{Id}: {Name}, Qty={Quantity}, Exp={ExpiryDate:d}";
 }
 
-// e) custom exceptions
+
 public class DuplicateItemException : Exception { public DuplicateItemException(string msg) : base(msg) { } }
 public class ItemNotFoundException : Exception { public ItemNotFoundException(string msg) : base(msg) { } }
 public class InvalidQuantityException : Exception { public InvalidQuantityException(string msg) : base(msg) { } }
 
-// d) generic repository
+
 public class InventoryRepository<T> where T : IInventoryItem
 {
     private readonly Dictionary<int, T> _items = new();
@@ -82,7 +82,6 @@ public class InventoryRepository<T> where T : IInventoryItem
     }
 }
 
-// f) manager
 public class WareHouseManager
 {
     private readonly InventoryRepository<ElectronicItem> _electronics = new();
@@ -133,7 +132,7 @@ public class WareHouseManager
         Console.WriteLine("\nElectronics:");
         mgr.PrintAllItems(mgr._electronics);
 
-        // v) try error scenarios
+     
         try { mgr._electronics.AddItem(new ElectronicItem(1, "Tablet", 3, "Apple", 12)); }
         catch (Exception ex) { Console.WriteLine($"Duplicate add: {ex.Message}"); }
 

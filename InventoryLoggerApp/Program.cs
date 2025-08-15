@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
 
-// b) marker interface
+
 public interface IInventoryEntity { int Id { get; } }
 
-// a) immutable record
+
 public record InventoryItem(int Id, string Name, int Quantity, DateTime DateAdded) : IInventoryEntity;
 
-// c) generic logger (T : IInventoryEntity)
+
 public class InventoryLogger<T> where T : IInventoryEntity
 {
     private readonly List<T> _log = new();
@@ -52,7 +52,7 @@ public class InventoryLogger<T> where T : IInventoryEntity
     }
 }
 
-// f) integration app
+
 public class InventoryApp
 {
     private InventoryLogger<InventoryItem> _logger = new("inventory.json");
@@ -82,7 +82,6 @@ public class InventoryApp
         app.SeedSampleData();
         app.SaveData();
 
-        // simulate new session (fresh logger)
         app = new InventoryApp();
         app.LoadData();
         app.PrintAllItems();

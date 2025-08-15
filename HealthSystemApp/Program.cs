@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-// a) generic repository
+
 public class Repository<T>
 {
     private readonly List<T> items = new();
@@ -16,7 +16,7 @@ public class Repository<T>
     }
 }
 
-// b) Patient
+
 public class Patient
 {
     public int Id;
@@ -32,7 +32,7 @@ public class Patient
     public override string ToString() => $"{Id}: {Name}, {Age}, {Gender}";
 }
 
-// c) Prescription
+
 public class Prescription
 {
     public int Id;
@@ -48,7 +48,7 @@ public class Prescription
     public override string ToString() => $"Rx#{Id} for Patient {PatientId}: {MedicationName} on {DateIssued:d}";
 }
 
-// g) HealthSystemApp
+
 public class HealthSystemApp
 {
     private readonly Repository<Patient> _patientRepo = new();
